@@ -1,0 +1,17 @@
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<div class="nav-side-menu">
+	<div class="menu-list">
+		<li><a href="#"> <i class="fa fa-user fa-lg"></i> Kategoria 1
+		</a></li>
+
+		<li><a href="#"> <i class="fa fa-user fa-lg"></i> Kategoria 2
+		</a></li>
+		</ul>
+	</div>
+</div>
