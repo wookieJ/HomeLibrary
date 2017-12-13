@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html">
 <html>
 <head>
@@ -15,7 +17,10 @@
 	<!-- Rejestracja -->
 	<div class="container">
 		<div class="col-sm-6 col-md-4 col-md-offset-4">
-			<form class="form-signin" action="#" method="post">
+			<form class="form-signin" action="register" method="post">
+				<c:if test="${param.repeat == 1}">
+					<h2 id="warning">Użytkownik o podanym mailu lub loginie już istnieje!</h2>
+				</c:if>
 				<h2 class="form-signin-heading">Zarejestruj się</h2>
 				<input name="inputEmail" type="email" class="form-control" placeholder="Email" required autofocus>
 				<input name="inputUsername" type="text" class="form-control" placeholder="Nazwa użytkownika" required>

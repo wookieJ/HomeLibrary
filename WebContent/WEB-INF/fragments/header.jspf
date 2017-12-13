@@ -23,9 +23,18 @@
 				</li>
 				<li><a href="#">Strona główna</a></li>
 				<li><c:if test="${not empty sessionScope.user}">
-						<li><a href="#">Dodaj</a></li>
+						<li><a href="add">Dodaj</a></li>
 					</c:if></li>
-				<li><a href="#">Zaloguj</a></li>
+				<li>
+					<c:choose>
+               			<c:when test="${not empty sessionScope.user}">
+                   			 <a href="logout">Wyloguj</a>
+                		</c:when>
+                		<c:otherwise>
+                   			<a href="login">Zaloguj</a>
+                		</c:otherwise>
+            		</c:choose>
+				</li>
 			</ul>
 		</div>
 

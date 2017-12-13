@@ -205,6 +205,31 @@ body {
 }
 
 /*
+ * Register
+ */
+#warning {
+	color: #b30000;
+}
+
+/*
+ * Adding book
+ */
+.adding-form {
+	padding: 20px;
+	border: thick;
+	
+	border: 2px solid #c7c7c7;
+    border-radius: 10px;
+    
+    background-color: #e2e2e2;
+}
+
+.adding-box{
+	padding-top: 100px;
+	padding-bottom: 60px;
+}
+
+/*
  * Footer
  */
 .footer {

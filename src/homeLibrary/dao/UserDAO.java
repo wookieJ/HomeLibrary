@@ -7,5 +7,5 @@ import homeLibrary.model.User;
 public interface UserDAO extends GenericDAO<User, Long>
 {
 	public List<User> getAll();
-	public User getUserByUsername();
+	public User getUserByUsername(String username);
 }

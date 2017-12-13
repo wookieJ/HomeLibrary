@@ -6,14 +6,16 @@ public class Book
 	private String title;
 	private String author;
 	private String category;
+	private String description;
+	private String cover;
 	private User user;
 
-	public long getid()
+	public long getId()
 	{
 		return id;
 	}
 
-	public void setid(long id)
+	public void setId(long id)
 	{
 		this.id = id;
 	}
@@ -38,16 +40,6 @@ public class Book
 		this.author = author;
 	}
 
-	public User getUser()
-	{
-		return user;
-	}
-
-	public void setUser(User user)
-	{
-		this.user = user;
-	}
-
 	public String getCategory()
 	{
 		return category;
@@ -58,6 +50,63 @@ public class Book
 		this.category = category;
 	}
 
+	public String getDescription()
+	{
+		return description;
+	}
+
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+
+	public String getCover()
+	{
+		return cover;
+	}
+
+	public void setCover(String cover)
+	{
+		this.cover = cover;
+	}
+
+	public User getUser()
+	{
+		return user;
+	}
+
+	public void setUser(User user)
+	{
+		this.user = user;
+	}
+
+	public Book(long id, String title, String author, String category, String description, String cover, User user)
+	{
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.category = category;
+		this.description = description;
+		this.cover = cover;
+		this.user = user;
+	}
+	
+	public Book(Book book)
+	{
+		this.id = book.id;
+		this.title = book.title;
+		this.author = book.author;
+		this.category = book.category;
+		this.description = book.description;
+		this.cover = book.cover;
+		this.user = book.user;
+	}
+
+	public Book()
+	{
+
+	}
+
 	@Override
 	public int hashCode()
 	{
@@ -65,6 +114,8 @@ public class Book
 		int result = 1;
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
+		result = prime * result + ((cover == null) ? 0 : cover.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
@@ -95,6 +146,20 @@ public class Book
 		}
 		else if (!category.equals(other.category))
 			return false;
+		if (cover == null)
+		{
+			if (other.cover != null)
+				return false;
+		}
+		else if (!cover.equals(other.cover))
+			return false;
+		if (description == null)
+		{
+			if (other.description != null)
+				return false;
+		}
+		else if (!description.equals(other.description))
+			return false;
 		if (id != other.id)
 			return false;
 		if (title == null)
@@ -117,29 +182,6 @@ public class Book
 	@Override
 	public String toString()
 	{
-		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", category=" + category + ", user=" + user + "]";
-	}
-
-	public Book(long id, String title, String author, String category, User user)
-	{
-		this.id = id;
-		this.title = title;
-		this.author = author;
-		this.category = category;
-		this.user = user;
-	}
-
-	public Book(Book book)
-	{
-		this.id = book.id;
-		this.title = book.title;
-		this.author = book.author;
-		this.category = book.category;
-		this.user = book.user;
-	}
-
-	public Book()
-	{
-
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", category=" + category + ", description=" + description + ", cover=" + cover + ", user=" + user + "]";
 	}
 }
