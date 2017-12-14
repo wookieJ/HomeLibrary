@@ -32,6 +32,8 @@
 		<div class="container">
 			<div class="col-sm-9 col-md-10 navbar-right">
 				<div class="row">
+				
+				
 					<div class="card">
 						<a href="#"> <img src="resources/covers/example.jpg"
 							alt="Card image cap">
@@ -40,6 +42,7 @@
 							below as a natural lead-in to additional content. This content is
 							a little bit longer.</p>
 					</div>
+					
 				</div>
 			</div>
 
