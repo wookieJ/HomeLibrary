@@ -28,7 +28,7 @@
 	<div class="adding-box">
 		<div class="container">
 			<div class="col-sm-10 col-md-8 col-md-offset-2">
-				<form class="adding-form" action="add" method="POST">
+				<form class="adding-form" action="add" method="POST" >
 					<h2 class="form-signin-heading">Dodaj książkę</h2>
 
 					<div class="form-group">
@@ -64,6 +64,7 @@
 							<option>Przygodowe</option>
 							<option>Języki obce</option>
 							<option>Kryminał</option>
+							<option>Biografia</option>
 						</select>
 					</div>
 
@@ -80,7 +81,7 @@
 							id="fileHelp" class="form-text text-muted">Podaj plik
 							źródłowy okładki książki.</small>
 					</div>
-					<fieldset class="form-group">
+					<!-- <fieldset class="form-group">
 						<legend>Rozszerzenie</legend>
 						<div class="form-check">
 							<label class="form-check-label"> <input type="radio"
@@ -94,14 +95,14 @@
 								id="optionsRadios2" value="option2"> Option two can be
 								something else and selecting it will deselect option one
 							</label>
-						</div> -->
+						</div> 
 						<div class="form-check disabled">
 							<label class="form-check-label"> <input type="radio"
 								class="form-check-input" name="inputOption"
 								id="inputEpubExtension" value="epub" disabled> EPUB
 							</label>
 						</div>
-					</fieldset>
+					</fieldset> -->
 					<!-- <div class="form-check">
 						<label class="form-check-label"> <input type="checkbox"
 							class="form-check-input"> Check me out

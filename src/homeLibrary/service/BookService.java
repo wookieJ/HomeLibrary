@@ -1,5 +1,7 @@
 package homeLibrary.service;
 
+import java.util.List;
+
 import homeLibrary.dao.BookDAO;
 import homeLibrary.dao.DAOFactory;
 import homeLibrary.model.Book;
@@ -20,5 +22,14 @@ public class BookService
 		DAOFactory factory = DAOFactory.getDAOFactory();
 		BookDAO bookDAO = factory.getBookDAO();
 		bookDAO.create(book);
+	}
+	
+	public List<Book> getAllBooks()
+	{
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		BookDAO bookDAO = factory.getBookDAO();
+		List<Book> books = bookDAO.getAll();
+		
+		return books;
 	}
 }

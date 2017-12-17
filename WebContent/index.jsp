@@ -26,23 +26,22 @@
 	<!-- Header -->
 	<jsp:include page="WEB-INF/fragments/header.jspf"></jsp:include>
 	<!-- Left Tree -->
-	<!--<jsp:include page="WEB-INF/fragments/leftTree.jspf"></jsp:include>-->
+	<jsp:include page="WEB-INF/fragments/leftTree.jspf"></jsp:include>
 	<!-- Index Body -->
 	<div class="album text-muted">
 		<div class="container">
 			<div class="col-sm-9 col-md-10 navbar-right">
 				<div class="row">
-				
-				
-					<div class="card">
-						<a href="#"> <img src="resources/covers/example.jpg"
-							alt="Card image cap">
-						</a>
-						<p class="card-text">This is a wider card with supporting text
-							below as a natural lead-in to additional content. This content is
-							a little bit longer.</p>
-					</div>
-					
+					<c:if test="${not empty requestScope.books}">
+						<c:forEach var="book" items="${requestScope.books}">
+							<div class="card">
+								<a href="#"> <img src="${book.cover}"
+									alt="Card image cap">
+								</a>
+								<p class="card-text">"${book.title}"</p>
+							</div>
+						</c:forEach>
+					</c:if>
 				</div>
 			</div>
 

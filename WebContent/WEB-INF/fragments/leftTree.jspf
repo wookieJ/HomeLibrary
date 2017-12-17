@@ -7,11 +7,12 @@
 
 <div class="nav-side-menu">
 	<div class="menu-list">
-		<li><a href="#"> <i class="fa fa-user fa-lg"></i> Kategoria 1
-		</a></li>
-
-		<li><a href="#"> <i class="fa fa-user fa-lg"></i> Kategoria 2
-		</a></li>
-		</ul>
+		<c:if test="${not empty requestScope.categories }">
+			<c:forEach var="category" items="${requestScope.categories }">
+				<li><a href="#"> <i class="fa fa-lg"></i>
+						${category}
+				</a></li>
+			</c:forEach>
+		</c:if>
 	</div>
 </div>

@@ -1,9 +1,12 @@
 package homeLibrary.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -11,11 +14,13 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import homeLibrary.model.Book;
+import homeLibrary.model.User;
 import homeLibrary.util.ConnectionProvider;
 
 public class BookDAOImpl implements BookDAO
 {
 	private final static String CREATE_BOOK = "INSERT INTO book (title, author, category, user_id, description, cover) VALUES(:title, :author, :category, :user_id, :description, :cover);";
+	private final static String GET_ALL_BOOKS = "SELECT book_id, title, author, category, book.user_id, description, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id;";
 	
 	private NamedParameterJdbcTemplate template;
 	
@@ -72,8 +77,8 @@ public class BookDAOImpl implements BookDAO
 	@Override
 	public List<Book> getAll()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		List<Book> listOfBooks = template.query(GET_ALL_BOOKS, new BookRowMapper());
+		return listOfBooks;
 	}
 
 	@Override
@@ -95,5 +100,29 @@ public class BookDAOImpl implements BookDAO
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	private class BookRowMapper implements RowMapper<Book>
+	{
+		@Override
+		public Book mapRow(ResultSet resultSet, int row) throws SQLException
+		{
+			Book book = new Book();
+			book.setId(resultSet.getLong("book_id"));
+			book.setTitle(resultSet.getString("title"));
+			book.setAuthor(resultSet.getString("author"));
+			book.setDescription(resultSet.getString("description"));
+			book.setCategory(resultSet.getString("category"));
+			book.setCover(resultSet.getString("cover"));
+			
+			User user = new User();
+			user.setId(resultSet.getLong("user_id"));
+//			user.setEmail(resultSet.getString("email"));
+			user.setUsername(resultSet.getString("username"));
+			
+			book.setUser(user);
+	
+			return book;
+		}
 	}
 }
