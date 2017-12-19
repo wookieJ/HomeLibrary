@@ -19,8 +19,8 @@ import homeLibrary.util.ConnectionProvider;
 
 public class BookDAOImpl implements BookDAO
 {
-	private final static String CREATE_BOOK = "INSERT INTO book (title, author, category, user_id, description, cover) VALUES(:title, :author, :category, :user_id, :description, :cover);";
-	private final static String GET_ALL_BOOKS = "SELECT book_id, title, author, category, book.user_id, description, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id;";
+	private final static String CREATE_BOOK = "INSERT INTO book (title, author, category, user_id, description, rate, cover) VALUES(:title, :author, :category, :user_id, :description, :rate, :cover);";
+	private final static String GET_ALL_BOOKS = "SELECT book_id, title, author, category, book.user_id, description, rate, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id;";
 	
 	private NamedParameterJdbcTemplate template;
 	
@@ -40,6 +40,7 @@ public class BookDAOImpl implements BookDAO
 		paramMap.put("category", bookCopy.getCategory());
 		paramMap.put("user_id", bookCopy.getUser().getId());
 		paramMap.put("description", bookCopy.getDescription());
+		paramMap.put("rate", bookCopy.getRate());
 		paramMap.put("cover", bookCopy.getCover());
 		
 		SqlParameterSource paramSource = new MapSqlParameterSource(paramMap);
@@ -113,6 +114,7 @@ public class BookDAOImpl implements BookDAO
 			book.setAuthor(resultSet.getString("author"));
 			book.setDescription(resultSet.getString("description"));
 			book.setCategory(resultSet.getString("category"));
+			book.setRate(resultSet.getDouble("rate"));
 			book.setCover(resultSet.getString("cover"));
 			
 			User user = new User();

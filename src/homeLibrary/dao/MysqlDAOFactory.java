@@ -13,4 +13,10 @@ public class MysqlDAOFactory extends DAOFactory
 	{
 		return new BookDAOImpl();
 	}
+
+	@Override
+	public RateDAO getRateDAO()
+	{
+		return new RateDAOImpl();
+	}
 }

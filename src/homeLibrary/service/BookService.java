@@ -17,6 +17,7 @@ public class BookService
 		book.setCategory(category);
 		book.setDescription(description);
 		book.setCover(cover);
+		book.setRate(0);
 		book.setUser(user);
 		
 		DAOFactory factory = DAOFactory.getDAOFactory();

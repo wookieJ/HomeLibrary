@@ -8,6 +8,7 @@ public class Book
 	private String category;
 	private String description;
 	private String cover;
+	private double rate;
 	private User user;
 
 	public long getId()
@@ -70,6 +71,16 @@ public class Book
 		this.cover = cover;
 	}
 
+	public double getRate()
+	{
+		return rate;
+	}
+
+	public void setRate(double rate)
+	{
+		this.rate = rate;
+	}
+
 	public User getUser()
 	{
 		return user;
@@ -80,7 +91,7 @@ public class Book
 		this.user = user;
 	}
 
-	public Book(long id, String title, String author, String category, String description, String cover, User user)
+	public Book(long id, String title, String author, String category, String description, String cover, double rate, User user)
 	{
 		this.id = id;
 		this.title = title;
@@ -88,9 +99,10 @@ public class Book
 		this.category = category;
 		this.description = description;
 		this.cover = cover;
+		this.rate = rate;
 		this.user = user;
 	}
-	
+
 	public Book(Book book)
 	{
 		this.id = book.id;
@@ -99,6 +111,7 @@ public class Book
 		this.category = book.category;
 		this.description = book.description;
 		this.cover = book.cover;
+		this.rate = book.rate;
 		this.user = book.user;
 	}
 
@@ -117,6 +130,9 @@ public class Book
 		result = prime * result + ((cover == null) ? 0 : cover.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
+		long temp;
+		temp = Double.doubleToLongBits(rate);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -162,6 +178,8 @@ public class Book
 			return false;
 		if (id != other.id)
 			return false;
+		if (Double.doubleToLongBits(rate) != Double.doubleToLongBits(other.rate))
+			return false;
 		if (title == null)
 		{
 			if (other.title != null)
@@ -182,6 +200,6 @@ public class Book
 	@Override
 	public String toString()
 	{
-		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", category=" + category + ", description=" + description + ", cover=" + cover + ", user=" + user + "]";
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", category=" + category + ", description=" + description + ", cover=" + cover + ", rate=" + rate + ", user=" + user + "]";
 	}
 }

@@ -58,11 +58,27 @@
 							<p>
 								<c:out value="${book.description}" />
 							</p>
-
-							<input id="input-2-xs" name="inputRate"
-								class="rating rating-loading" data-min="0" data-max="5"
-								data-step="0.1" data-size="xs" value = 0> <a
-								href="<c:out value="#" />" class="btn btn-default btn-xs">Więcej</a>
+							<form action="rate" method="GET">
+								<div class="rating-box">
+									<div class="container">
+										<div class="row">
+											<div class="col col-md-4 col-sm-4">
+												<input id="input-2-xs" name="inputRate"
+													class="rating rating-loading" data-min="0" data-max="5"
+													data-step="0.1" data-size="xs" value=${book.rate }>
+											</div>
+											<div class="col col-md-1 col-sm-1">
+												<a
+													href="${pageContext.request.contextPath}/rate?book_id=${book.id}&inputRate=${book.rate}"
+													class="btn btn-default">Oceń</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							<div class="more-button">
+								<a href="<c:out value="#" />" class="btn btn-default btn-xs">Więcej</a>
+							</div>
 						</div>
 					</div>
 				</div>
