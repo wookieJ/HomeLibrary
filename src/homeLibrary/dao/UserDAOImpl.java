@@ -38,7 +38,6 @@ public class UserDAOImpl implements UserDAO
 		SqlParameterSource paramSource = new BeanPropertySqlParameterSource(user);
 		System.out.println("Tworzenie user'a...");
 		int update = template.update(CREATE_USER, paramSource, holder);
-		System.out.println(update);
 		if (update > 0)
 		{
 			copyUser.setId((Long) holder.getKey());
