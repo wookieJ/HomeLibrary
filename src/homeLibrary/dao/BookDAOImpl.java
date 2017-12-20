@@ -21,6 +21,8 @@ public class BookDAOImpl implements BookDAO
 {
 	private final static String CREATE_BOOK = "INSERT INTO book (title, author, category, user_id, description, rate, cover) VALUES(:title, :author, :category, :user_id, :description, :rate, :cover);";
 	private final static String GET_ALL_BOOKS = "SELECT book_id, title, author, category, book.user_id, description, rate, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id;";
+	private final static String GET_BOOK_BY_ID = "SELECT book_id, title, author, category, user_id, description, rate, cover FROM book WHERE book_id = :book_id;";
+	private final static String UPDATE_BOOK = "UPDATE book SET rate = :value WHERE book_id = :book_id;";
 	
 	private NamedParameterJdbcTemplate template;
 	
@@ -55,21 +57,31 @@ public class BookDAOImpl implements BookDAO
 	}
 
 	@Override
-	public Book read(Long primaryKey)
+	public Book read(Long id)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		SqlParameterSource paramSource = new MapSqlParameterSource("book_id", id);
+		Book book = template.queryForObject(GET_BOOK_BY_ID, paramSource, new BookSimpleRowMapper());
+		
+		return book;
 	}
 
 	@Override
 	public boolean update(Book book)
 	{
-		// TODO Auto-generated method stub
+		Map<String, Object> mapParameter = new HashMap<>();
+		mapParameter.put("value", book.getRate());
+		mapParameter.put("book_id", book.getId());
+		SqlParameterSource paramSource = new MapSqlParameterSource(mapParameter);
+		int update = template.update(UPDATE_BOOK, paramSource);
+		
+		if(update > 0)
+			return true;
+		
 		return false;
 	}
 
 	@Override
-	public boolean delete(Long primaryKey)
+	public boolean delete(Long id)
 	{
 		// TODO Auto-generated method stub
 		return false;
@@ -101,6 +113,24 @@ public class BookDAOImpl implements BookDAO
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	private class BookSimpleRowMapper implements RowMapper<Book>
+	{
+		@Override
+		public Book mapRow(ResultSet resultSet, int row) throws SQLException
+		{
+			Book book = new Book();
+			book.setId(resultSet.getLong("book_id"));
+			book.setTitle(resultSet.getString("title"));
+			book.setAuthor(resultSet.getString("author"));
+			book.setDescription(resultSet.getString("description"));
+			book.setCategory(resultSet.getString("category"));
+			book.setRate(resultSet.getDouble("rate"));
+			book.setCover(resultSet.getString("cover"));
+			
+			return book;
+		}
 	}
 	
 	private class BookRowMapper implements RowMapper<Book>

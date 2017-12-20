@@ -4,8 +4,8 @@ public class Rate
 {
 	private long id;
 	private double value;
-	private Book book;
-	private User user;
+	private long book_id;
+	private long user_id;
 
 	public long getId()
 	{
@@ -27,24 +27,24 @@ public class Rate
 		this.value = value;
 	}
 
-	public Book getBook()
+	public long getBook_id()
 	{
-		return book;
+		return book_id;
 	}
 
-	public void setBook(Book book)
+	public void setBook_id(long book_id)
 	{
-		this.book = book;
+		this.book_id = book_id;
 	}
 
-	public User getUser()
+	public long getUser_id()
 	{
-		return user;
+		return user_id;
 	}
 
-	public void setUser(User user)
+	public void setUser_id(long user_id)
 	{
-		this.user = user;
+		this.user_id = user_id;
 	}
 
 	@Override
@@ -52,9 +52,9 @@ public class Rate
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((book == null) ? 0 : book.hashCode());
+		result = prime * result + (int) (book_id ^ (book_id >>> 32));
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + (int) (user_id ^ (user_id >>> 32));
 		long temp;
 		temp = Double.doubleToLongBits(value);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -71,21 +71,11 @@ public class Rate
 		if (getClass() != obj.getClass())
 			return false;
 		Rate other = (Rate) obj;
-		if (book == null)
-		{
-			if (other.book != null)
-				return false;
-		}
-		else if (!book.equals(other.book))
+		if (book_id != other.book_id)
 			return false;
 		if (id != other.id)
 			return false;
-		if (user == null)
-		{
-			if (other.user != null)
-				return false;
-		}
-		else if (!user.equals(other.user))
+		if (user_id != other.user_id)
 			return false;
 		if (Double.doubleToLongBits(value) != Double.doubleToLongBits(other.value))
 			return false;
@@ -95,23 +85,23 @@ public class Rate
 	@Override
 	public String toString()
 	{
-		return "Rate [id=" + id + ", value=" + value + ", book=" + book + ", user=" + user + "]";
+		return "Rate [id=" + id + ", value=" + value + ", book_id=" + book_id + ", user_id=" + user_id + "]";
 	}
 
-	public Rate(long id, double value, Book book, User user)
+	public Rate(long id, double value, long book_id, long user_id)
 	{
 		this.id = id;
 		this.value = value;
-		this.book = book;
-		this.user = user;
+		this.book_id = book_id;
+		this.user_id = user_id;
 	}
 
 	public Rate(Rate rate)
 	{
 		this.id = rate.id;
 		this.value = rate.value;
-		this.book = rate.book;
-		this.user = rate.user;
+		this.book_id = rate.book_id;
+		this.user_id = rate.user_id;
 	}
 
 	public Rate()

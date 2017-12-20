@@ -58,6 +58,7 @@
 							<p>
 								<c:out value="${book.description}" />
 							</p>
+							
 							<form action="rate" method="GET">
 								<div class="rating-box">
 									<div class="container">
@@ -68,14 +69,14 @@
 													data-step="0.1" data-size="xs" value=${book.rate }>
 											</div>
 											<div class="col col-md-1 col-sm-1">
-												<a
-													href="${pageContext.request.contextPath}/rate?book_id=${book.id}&inputRate=${book.rate}"
-													class="btn btn-default">Oceń</a>
+											<input type="hidden" name="book_id" value=${book.id }>
+											<input type="submit" value="Oceń">
 											</div>
 										</div>
 									</div>
 								</div>
 							</form>
+							
 							<div class="more-button">
 								<a href="<c:out value="#" />" class="btn btn-default btn-xs">Więcej</a>
 							</div>

@@ -33,4 +33,27 @@ public class BookService
 		
 		return books;
 	}
+	
+	public boolean updateBook(long book_id, double value)
+	{
+		Book book = new Book();
+		book.setId(book_id);
+		book.setRate(value);
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		BookDAO bookDAO = factory.getBookDAO();
+		boolean ifUpdated = bookDAO.update(book);
+		if(ifUpdated == true)
+			return true;
+		return false;
+	}
+	
+	public Book getBookById(long book_id)
+	{
+		Book book = new Book();
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		BookDAO bookDAO = factory.getBookDAO();
+		
+		book = bookDAO.read(book_id);
+		return book;
+	}
 }

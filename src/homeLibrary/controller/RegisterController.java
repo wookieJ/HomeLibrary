@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.dao.EmptyResultDataAccessException;
+
+import homeLibrary.model.User;
 import homeLibrary.service.UserService;
 
 /**
@@ -31,18 +34,26 @@ public class RegisterController extends HttpServlet
 		String password = request.getParameter("inputPassword");
 
 		UserService userService = new UserService();
-//		User compareUser = userService.getUserByUsername(username);
-		
-//		if(compareUser == null)
-//		{
-//			System.out.println("adding...");
+		User compareUser = null;
+		try
+		{
+			compareUser = userService.getUserByUsername(username);
+		}
+		catch (EmptyResultDataAccessException e)
+		{
+			e.printStackTrace();
+			System.out.println("SZUKANY U¯YTKOWNIK NIE ISTNIEJE W BAZIE DANYCH!");
+		}
+		if (compareUser == null)
+		{
+			// System.out.println("adding...");
 			userService.addUser(username, email, password);
-			response.sendRedirect(request.getContextPath() + "/index.jsp");
-//		}
+			response.sendRedirect(request.getContextPath() + "/");
+		}
 		// Sprawdziæ czy nie ma ju¿ takiego u¿ytklownika w bazie
-//		else if (compareUser.getUsername().equals(username) || compareUser.getEmail().equals(email))
-//		{
-//			response.sendRedirect(request.getContextPath() + "/register.jsp?repeat=1");
-//		}
+		else if (compareUser.getUsername().equals(username) || compareUser.getEmail().equals(email))
+		{
+			response.sendRedirect(request.getContextPath() + "/register.jsp?repeat=1");
+		}
 	}
 }

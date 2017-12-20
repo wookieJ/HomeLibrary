@@ -4,7 +4,7 @@
 <!--  -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
-		<a href="#" class="navbar-brand">Biblioteka</a>
+		<a href="" class="navbar-brand">Biblioteka</a>
 
 
 		<div class="collapse navbar-collapse navCollapse">
@@ -21,7 +21,7 @@
 						</div>
 					</form>
 				</li>
-				<li><a href="#">Strona główna</a></li>
+				<li><a href="">Strona główna</a></li>
 				<li><c:if test="${not empty sessionScope.user}">
 						<li><a href="add">Dodaj</a></li>
 					</c:if></li>
