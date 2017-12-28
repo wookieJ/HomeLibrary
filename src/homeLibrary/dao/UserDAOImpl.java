@@ -21,6 +21,7 @@ public class UserDAOImpl implements UserDAO
 	private final static String SET_USER_ROLE = "INSERT INTO user_role(username) VALUES(:username);";
 	private final static String READ_USER = "SELECT user_id, username, email, password FROM user WHERE user_id= :user_id;";
 	private final static String READ_USER_BY_USERNAME = "SELECT user_id, username, email, password FROM user WHERE username = :username";
+	private final static String READ_USER_ROLE = "SELECT role_name FROM user_role WHERE username = :username;";
 
 	private NamedParameterJdbcTemplate template;
 
@@ -98,5 +99,23 @@ public class UserDAOImpl implements UserDAO
 		resultUser = template.queryForObject(READ_USER_BY_USERNAME, paramSource, new UserRowMapper());
 
 		return resultUser;
+	}
+
+	@Override
+	public String getUserRoleByUsername(String username)
+	{
+		String role = new String();
+		SqlParameterSource paramSource = new MapSqlParameterSource("username", username);
+		role = template.queryForObject(READ_USER_ROLE, paramSource, new RowMapper<String>()
+		{
+			@Override
+			public String mapRow(ResultSet resultSet, int row) throws SQLException
+			{
+				return resultSet.getString("role_name");
+			}
+
+		});
+
+		return role;
 	}
 }

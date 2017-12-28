@@ -36,4 +36,13 @@ public class UserService
         
         return user;
 	}
+	
+	public String getUserRoleByUsername(String username)
+	{
+		DAOFactory factory = DAOFactory.getDAOFactory();
+        UserDAO userDao = factory.getUserDAO();
+        String role = userDao.getUserRoleByUsername(username);
+        
+        return role;
+	}
 }

@@ -23,6 +23,9 @@ public class BookDAOImpl implements BookDAO
 	private final static String GET_ALL_BOOKS = "SELECT book_id, title, author, category, book.user_id, description, rate, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id;";
 	private final static String GET_BOOK_BY_ID = "SELECT book_id, title, author, category, user_id, description, rate, cover FROM book WHERE book_id = :book_id;";
 	private final static String UPDATE_BOOK = "UPDATE book SET rate = :value WHERE book_id = :book_id;";
+	private final static String GET_BOOKS_BY_AUTHOR = "SELECT book_id, title, author, category, book.user_id, description, rate, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id WHERE author = :author;";
+	private final static String GET_BOOKS_BY_CATEGORY = "SELECT book_id, title, author, category, book.user_id, description, rate, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id WHERE category = :category;";
+	private final static String GET_BOOKS_BY_TITLE = "SELECT book_id, title, author, category, book.user_id, description, rate, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id WHERE title = :title;";
 	
 	private NamedParameterJdbcTemplate template;
 	
@@ -95,24 +98,27 @@ public class BookDAOImpl implements BookDAO
 	}
 
 	@Override
-	public List<Book> getBooksByAuthor()
+	public List<Book> getBooksByAuthor(String author)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		SqlParameterSource paramSource = new MapSqlParameterSource("author", author);
+		List<Book> listOfBooks = template.query(GET_BOOKS_BY_AUTHOR, paramSource, new BookRowMapper());
+		return listOfBooks;
 	}
 
 	@Override
-	public List<Book> getBooksByCategory()
+	public List<Book> getBooksByCategory(String category)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		SqlParameterSource paramSource = new MapSqlParameterSource("category", category);
+		List<Book> listOfBooks = template.query(GET_BOOKS_BY_CATEGORY, paramSource, new BookRowMapper());
+		return listOfBooks;
 	}
 
 	@Override
-	public Book getBookByTitle()
+	public List<Book> getBooksByTitle(String title)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		SqlParameterSource paramSource = new MapSqlParameterSource("title", title);
+		List<Book> listOfBooks = template.query(GET_BOOKS_BY_TITLE, paramSource, new BookRowMapper());
+		return listOfBooks;
 	}
 	
 	private class BookSimpleRowMapper implements RowMapper<Book>

@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<!-- RESPONSIVE PAGE FOR PHONES -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
@@ -27,68 +29,106 @@
 <title>Strona główna</title>
 </head>
 <body>
-	<!-- Header -->
-	<jsp:include page="WEB-INF/fragments/header.jspf"></jsp:include>
-	<!-- Left Tree -->
-	<jsp:include page="WEB-INF/fragments/leftTree.jspf"></jsp:include>
-	<!-- Index Body -->
 
-	<div class="books">
-		<c:if test="${not empty requestScope.books}">
-			<c:forEach var="book" items="${requestScope.books}">
-				<!-- <div class="card">
+	<div class="page-container">
+
+		<!-- top navbar -->
+		<jsp:include page="WEB-INF/fragments/header.jspf"></jsp:include>
+
+		<div class="container">
+			<div class="row row-offcanvas row-offcanvas-left">
+
+				<!-- main area -->
+				<div class="col-xs-12 col-sm-12 col-md-10">
+					<div class="books">
+						<c:if test="${param.isEmpty == 1}">
+							<h2 id="warning">Nie znaleziono książek</h2>
+						</c:if>
+						<c:if test="${not empty requestScope.books}">
+							<c:forEach var="book" items="${requestScope.books}">
+								<!-- <div class="card">
 								<a href="#"> <img src="${book.cover}" alt="Card image cap">
 								</a>
 								<h2 class="card-text">${book.title}</h2>
 							</div> -->
-				<div class="container">
-					<div class="row bs-callout bs-callout-primary">
-						<div class="col col-md-2 col-sm-3">
-							<a href="#"> <img src="${book.cover}" alt="Card image cap">
-							</a>
-						</div>
-						<div class="col col-md-10 col-sm-9">
-							<h3 class="centered">
-								<a href="<c:out value="#" />"><c:out value="${book.title}" /></a>
-							</h3>
-							<h6>
-								<small>Dodane przez: <c:out
-										value="${book.user.username}" /></small>
-							</h6>
-							<p>
-								<c:out value="${book.description}" />
-							</p>
-							
-							<form action="rate" method="GET">
-								<div class="rating-box">
-									<div class="container">
-										<div class="row">
-											<div class="col col-md-4 col-sm-4">
-												<input id="input-2-xs" name="inputRate"
-													class="rating rating-loading" data-min="0" data-max="5"
-													data-step="0.1" data-size="xs" value=${book.rate }>
-											</div>
-											<div class="col col-md-1 col-sm-1">
-											<input type="hidden" name="book_id" value=${book.id }>
-											<input type="submit" value="Oceń">
+								<div class="col col-md-12 col-sm-12">
+									<div class="row bs-callout bs-callout-primary">
+										<div class="col col-md-2 col-sm-3">
+											<a href="#"> <img src="${book.cover}"
+												alt="Card image cap">
+											</a>
+										</div>
+										<div class="row-container">
+											<div class="col col-md-10 col-sm-10">
+												<h3 class="centered">
+													<a href="<c:out value="#" />"><c:out
+															value="${book.title}" /></a>
+												</h3>
+												<h6>
+													<small>Dodane przez: <c:out
+															value="${book.user.username}" /></small>
+												</h6>
+												<p>
+													<c:out value="${book.description}" />
+												</p>
+
+												<form action="rate" method="GET">
+													<div class="rating-box">
+														<div class="container">
+															<div class="row">
+																<div class="col col-md-4 col-sm-4 col-xs-4">
+																	<input id="input-2-xs" name="inputRate"
+																		class="rating rating-loading" data-min="0"
+																		data-max="5" data-step="0.1" data-size="xs"
+																		value=${book.rate }>
+																</div>
+																<div class="col col-md-1 col-sm-1 col-xs-1">
+																	<input type="hidden" name="book_id" value=${book.id }>
+																	<input type="submit" value="Oceń">
+																</div>
+															</div>
+														</div>
+													</div>
+												</form>
+
+												<div class="more-button">
+													<a href="<c:out value="#" />"
+														class="btn btn-default btn-xs">Więcej</a>
+												</div>
+												<c:if test="${not empty param.role}">
+													<c:if test="${param.role eq admin }">
+														<div class="delete-button">
+															<a href="#">
+																<button type="button" class="btn btn-danger">
+																	<span class="glyphicon glyphicon-remove"
+																		aria-hidden="true"></span> Usuń
+																</button>
+															</a>
+														</div>
+													</c:if>
+												</c:if>
 											</div>
 										</div>
 									</div>
-								</div>
-							</form>
-							
-							<div class="more-button">
-								<a href="<c:out value="#" />" class="btn btn-default btn-xs">Więcej</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-		</c:if>
-	</div>
 
-	<!-- Footer -->
-	<jsp:include page="WEB-INF/fragments/footer.jspf"></jsp:include>
+								</div>
+							</c:forEach>
+						</c:if>
+
+					</div>
+
+				</div>
+				<!-- /.col-xs-12 main -->
+			</div>
+			<!--/.row-->
+		</div>
+		<!--/.container-->
+		<!-- Footer -->
+		<jsp:include page="WEB-INF/fragments/footer.jspf"></jsp:include>
+
+	</div>
+	<!--/.page-container-->
+
 	<!-- JavaScript includes -->
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -98,5 +138,6 @@
 		src="${pageContext.request.contextPath}/resources/js/star-rating.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/js/star-rating.min.js"></script>
+
 </body>
 </html>

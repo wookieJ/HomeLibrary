@@ -34,6 +34,33 @@ public class BookService
 		return books;
 	}
 	
+	public List<Book> getBooksByAuthor(String author)
+	{
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		BookDAO bookDAO = factory.getBookDAO();
+		List<Book> books = bookDAO.getBooksByAuthor(author);
+		
+		return books;
+	}
+	
+	public List<Book> getBooksByCategory(String category)
+	{
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		BookDAO bookDAO = factory.getBookDAO();
+		List<Book> books = bookDAO.getBooksByCategory(category);
+		
+		return books;
+	}
+	
+	public List<Book> getBooksByTitle(String title)
+	{
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		BookDAO bookDAO = factory.getBookDAO();
+		List<Book> books = bookDAO.getBooksByTitle(title);
+		
+		return books;
+	}
+	
 	public boolean updateBook(long book_id, double value)
 	{
 		Book book = new Book();
