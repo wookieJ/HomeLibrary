@@ -26,6 +26,7 @@ public class BookDAOImpl implements BookDAO
 	private final static String GET_BOOKS_BY_AUTHOR = "SELECT book_id, title, author, category, book.user_id, description, rate, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id WHERE author = :author;";
 	private final static String GET_BOOKS_BY_CATEGORY = "SELECT book_id, title, author, category, book.user_id, description, rate, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id WHERE category = :category;";
 	private final static String GET_BOOKS_BY_TITLE = "SELECT book_id, title, author, category, book.user_id, description, rate, cover, user.username FROM book LEFT JOIN user ON book.user_id = user.user_id WHERE title = :title;";
+	private final static String DELETE_BOOK = "DELETE FROM book WHERE book_id = :book_id;";
 	
 	private NamedParameterJdbcTemplate template;
 	
@@ -86,8 +87,12 @@ public class BookDAOImpl implements BookDAO
 	@Override
 	public boolean delete(Long id)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		boolean ifDeleted = false;
+		SqlParameterSource paramMap = new MapSqlParameterSource("book_id", id);
+		int update = template.update(DELETE_BOOK, paramMap);
+		if(update > 0)
+			ifDeleted = true;
+		return ifDeleted;
 	}
 
 	@Override

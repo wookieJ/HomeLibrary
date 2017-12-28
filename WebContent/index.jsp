@@ -95,17 +95,15 @@
 													<a href="<c:out value="#" />"
 														class="btn btn-default btn-xs">Więcej</a>
 												</div>
-												<c:if test="${not empty param.role}">
-													<c:if test="${param.role eq admin }">
-														<div class="delete-button">
-															<a href="#">
-																<button type="button" class="btn btn-danger">
-																	<span class="glyphicon glyphicon-remove"
-																		aria-hidden="true"></span> Usuń
-																</button>
-															</a>
-														</div>
-													</c:if>
+												<c:if test="${requestScope.roleName == 'admin'}">
+													<div class="delete-button">
+														<a href="${pageContext.request.contextPath}/deleteBook?book=${book.id}">
+															<button type="button" class="btn btn-danger">
+																<span class="glyphicon glyphicon-remove"
+																	aria-hidden="true"></span> Usuń
+															</button>
+														</a>
+													</div>
 												</c:if>
 											</div>
 										</div>

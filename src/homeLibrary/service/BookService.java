@@ -83,4 +83,12 @@ public class BookService
 		book = bookDAO.read(book_id);
 		return book;
 	}
+	
+	public boolean deleteBook(long book_id)
+	{
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		BookDAO bookDAO = factory.getBookDAO();
+		
+		return bookDAO.delete(book_id);
+	}
 }

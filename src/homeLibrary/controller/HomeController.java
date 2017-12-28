@@ -63,7 +63,7 @@ public class HomeController extends HttpServlet
 			if (role != null)
 			{
 				System.out.println("ROLE: " + role);
-				request.setAttribute("role", role);
+				request.setAttribute("roleName", role);
 			}
 		}
 		request.setCharacterEncoding("UTF-8");
