@@ -97,7 +97,14 @@
 												</div>
 												<c:if test="${requestScope.roleName == 'admin'}">
 													<div class="delete-button">
-														<a href="${pageContext.request.contextPath}/deleteBook?book=${book.id}">
+														<a
+															href="${pageContext.request.contextPath}/editBook?book=${book.id}">
+															<button type="button" class="btn btn-warning">
+																<span class="glyphicon glyphicon-pencil"
+																	aria-hidden="true"></span> Edytuj
+															</button>
+														</a> <a
+															href="${pageContext.request.contextPath}/deleteBook?book=${book.id}">
 															<button type="button" class="btn btn-danger">
 																<span class="glyphicon glyphicon-remove"
 																	aria-hidden="true"></span> Usuń

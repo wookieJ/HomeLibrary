@@ -68,7 +68,7 @@ public class RateController extends HttpServlet
 				System.out.println("New rate: " + newRate);
 
 				// Uaktualniam œredni¹ ksi¹¿ki
-				boolean ifUpdated = bookService.updateBook(bookId, newRate);
+				boolean ifUpdated = bookService.updateBookRate(bookId, newRate);
 				if (ifUpdated == true)
 					System.out.println("ZAKTUALIZOWANO KSIA¯KÊ!");
 				else
@@ -102,7 +102,7 @@ public class RateController extends HttpServlet
 					System.out.println("NIE ZAKTUALIZOWANO OCENY!");
 
 				// Aktualizacja œredniej ksi¹zki
-				boolean ifUpdatedBook = bookService.updateBook(bookId, newRate);
+				boolean ifUpdatedBook = bookService.updateBookRate(bookId, newRate);
 				if (ifUpdatedBook == true)
 					System.out.println("ZAKTUALIZOWANO KSIA¯KÊ!");
 				else

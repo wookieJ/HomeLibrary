@@ -10,4 +10,5 @@ public interface BookDAO extends GenericDAO<Book, Long>
 	public List<Book> getBooksByAuthor(String author);
 	public List<Book> getBooksByCategory(String Category);
 	public List<Book> getBooksByTitle(String title);
+	public boolean updateRate(Book book);
 }

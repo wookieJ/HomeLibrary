@@ -61,14 +61,25 @@ public class BookService
 		return books;
 	}
 	
-	public boolean updateBook(long book_id, double value)
+	public boolean updateBookRate(long book_id, double value)
 	{
 		Book book = new Book();
 		book.setId(book_id);
 		book.setRate(value);
 		DAOFactory factory = DAOFactory.getDAOFactory();
 		BookDAO bookDAO = factory.getBookDAO();
-		boolean ifUpdated = bookDAO.update(book);
+		boolean ifUpdated = bookDAO.updateRate(book);
+		if(ifUpdated == true)
+			return true;
+		return false;
+	}
+	
+	public boolean updateBook(Book book)
+	{
+		Book bookCopy = new Book(book);
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		BookDAO bookDAO = factory.getBookDAO();
+		boolean ifUpdated = bookDAO.update(bookCopy);
 		if(ifUpdated == true)
 			return true;
 		return false;
