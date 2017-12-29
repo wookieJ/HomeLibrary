@@ -31,16 +31,16 @@ public class EditController extends HttpServlet
 			if (book != null)
 			{
 				request.setAttribute("book", book);
-				request.getRequestDispatcher("edit.jsp").forward(request, response);
+				request.getRequestDispatcher("WEB-INF/edit.jsp").forward(request, response);
 			}
 			else
 			{
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 			}
 		}
 		else
 		{
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 		}
 	}
 

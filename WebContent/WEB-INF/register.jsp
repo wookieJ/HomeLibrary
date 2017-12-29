@@ -14,7 +14,7 @@
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="WEB-INF/fragments/header.jspf" />
+	<jsp:include page="fragments/header.jspf" />
 	
 	<!-- Rejestracja -->
 	<div class="container">
@@ -33,7 +33,7 @@
 	</div>
 	
 	<!-- Footer -->
-	<jsp:include page="WEB-INF/fragments/footer.jspf" />
+	<jsp:include page="fragments/footer.jspf" />
 
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

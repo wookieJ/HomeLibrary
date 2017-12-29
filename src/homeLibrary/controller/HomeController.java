@@ -67,6 +67,6 @@ public class HomeController extends HttpServlet
 			}
 		}
 		request.setCharacterEncoding("UTF-8");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 	}
 }

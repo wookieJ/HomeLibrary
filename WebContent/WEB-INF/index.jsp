@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html">
 <html>
 <head>
 <!-- RESPONSIVE PAGE FOR PHONES -->
@@ -33,7 +33,7 @@
 	<div class="page-container">
 
 		<!-- top navbar -->
-		<jsp:include page="WEB-INF/fragments/header.jspf"></jsp:include>
+		<jsp:include page="fragments/header.jspf"></jsp:include>
 
 		<div class="container">
 			<div class="row row-offcanvas row-offcanvas-left">
@@ -129,7 +129,7 @@
 		</div>
 		<!--/.container-->
 		<!-- Footer -->
-		<jsp:include page="WEB-INF/fragments/footer.jspf"></jsp:include>
+		<jsp:include page="fragments/footer.jspf"></jsp:include>
 
 	</div>
 	<!--/.page-container-->

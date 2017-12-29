@@ -15,7 +15,7 @@
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="WEB-INF/fragments/header.jspf"></jsp:include>
+	<jsp:include page="fragments/header.jspf"></jsp:include>
 	<!-- Logowanie -->
 	<div class="container">
 		<div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -32,7 +32,7 @@
 	</div>
 
 	<!-- Footer -->
-	<jsp:include page="WEB-INF/fragments/footer.jspf"></jsp:include>
+	<jsp:include page="fragments/footer.jspf"></jsp:include>
 
 </body>
 </html>
