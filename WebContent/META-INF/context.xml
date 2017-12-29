@@ -22,5 +22,18 @@
         userCredCol="password"
         userRoleTable="user_role"
         roleNameCol="role_name"
-        localDataSource="true" />	
+        localDataSource="true"
+        digest="md5" >
+     		<CredentialHandler
+     			className="org.apache.catalina.realm.MessageDigestCredentialHandler"
+     			algorithm="MD5" />
+     	</Realm>
 </Context>
+
+<!--  
+DataSourceRealm
+resourceName="UserDatabase"
+        digest="md5" >
+     	<CredentialHandler
+     		className="org.apache.catalina.realm.MessageDigestCredentialHandler"
+     		algorithm="MD5" /> -->

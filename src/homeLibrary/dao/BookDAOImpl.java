@@ -74,6 +74,7 @@ public class BookDAOImpl implements BookDAO
 	public boolean update(Book book)
 	{
 		Map<String, Object> mapParameter = new HashMap<>();
+		mapParameter.put("book_id", book.getId());
 		mapParameter.put("title", book.getTitle());
 		mapParameter.put("author", book.getAuthor());
 		mapParameter.put("description", book.getDescription());

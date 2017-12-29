@@ -16,6 +16,8 @@
       <web-resource-name>Auth</web-resource-name>
       <description>Resources that can be accessed after login</description>
       <url-pattern>/add</url-pattern>
+      <url-pattern>/editBook</url-pattern>
+      <url-pattern>/deleteBook</url-pattern>
       <url-pattern>/rate</url-pattern>
       <url-pattern>/login</url-pattern>
       <http-method>GET</http-method>
