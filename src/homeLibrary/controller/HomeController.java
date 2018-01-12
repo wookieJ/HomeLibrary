@@ -24,6 +24,8 @@ public class HomeController extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		System.out.println("NEW REQUEST : " + request.getRemoteAddr());
+		
 		if (request.getAttribute("books") == null)
 		{
 			BookService bookService = new BookService();
