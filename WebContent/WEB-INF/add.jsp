@@ -30,7 +30,7 @@
 	<div class="adding-box">
 		<div class="container">
 			<div class="col-sm-10 col-md-8 col-md-offset-2">
-				<form class="adding-form" action="add" method="POST" >
+				<form class="adding-form" action="add" enctype='multipart/form-data' method="POST" >
 					<h2 class="form-signin-heading">Dodaj książkę</h2>
 
 					<div class="form-group">

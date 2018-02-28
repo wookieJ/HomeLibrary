@@ -39,7 +39,7 @@
 			<div class="row row-offcanvas row-offcanvas-left">
 
 				<!-- main area -->
-				<div class="col-xs-12 col-sm-12 col-md-10">
+				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="books">
 						<c:if test="${param.isEmpty == 1}">
 							<h2 id="warning">Nie znaleziono książek</h2>
@@ -53,10 +53,12 @@
 							</div> -->
 								<div class="col col-md-12 col-sm-12">
 									<div class="row bs-callout bs-callout-primary">
-										<div class="col col-md-2 col-sm-3">
-											<a href="#"> <img src="${book.cover}"
-												alt="Card image cap">
-											</a>
+										<div class="image">
+											<div class="col col-md-2 col-sm-4">
+												<a href="#"> <img src="${book.cover}"
+													alt="Card image cap" width="128" height="180">
+												</a>
+											</div>
 										</div>
 										<div class="row-container">
 											<div class="col col-md-10 col-sm-10">
@@ -76,9 +78,9 @@
 													<div class="rating-box">
 														<div class="container">
 															<div class="row">
-																<div class="col col-md-4 col-sm-4 col-xs-4">
+																<div class="col col-md-4 col-sm-8 col-xs-10">
 																	<input id="input-2-xs" name="inputRate"
-																		class="rating rating-loading" data-min="0"
+																		class="rating" data-min="0"
 																		data-max="5" data-step="0.1" data-size="xs"
 																		value=${book.rate }>
 																</div>

@@ -189,7 +189,7 @@
             if (!self.showCaption) {
                 return;
             }
-            html = self.fetchCaption(val);
+            html = self.fetchCaption(val);s
             if ($cap && $cap.length) {
                 $h.addCss($cap, 'caption');
                 $cap.html(html);
