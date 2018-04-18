@@ -1,2 +1,2 @@
 # HomeLibrary
-Domowa biblioteka eBooków napisana w języku JAVA EE.
+Home e-books library, written in JAVA EE.
